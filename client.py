@@ -1,64 +1,10 @@
-# import requests
-# import json
-
-# # Sample house data for prediction (including engineered feature)
-# sample_data = {
-#     "MedInc": 4.8036,
-#     "HouseAge": 4.0,
-#     "AveRooms": 3.9246575342465753,
-#     "AveBedrms": 1.0359589041095891,
-#     "Population": 1050.0,
-#     "AveOccup": 1.797945205479452,
-#     "Latitude": 37.39,
-#     "Longitude": -122.08,
-#     "RoomsPerHousehold": 2.182857142857143  # AveRooms / AveOccup
-# }
-
-# # API endpoint
-# url = "http://localhost:8000/predict"
-
-# # Make prediction request
-# response = requests.post(url, json=sample_data)
-
-# try:
-#     # Check if the request was successful (status code 200 means "OK")
-#     if response.status_code == 200:
-#         # Convert the JSON response back to a Python dictionary
-#         result = response.json()
-        
-#         # Extract the prediction value from the response
-#         # Convert predicted value from units of 100,000s to actual dollar amount
-#         # (Remember: our model predicts in units of $100,000)
-#         predicted_value = result['prediction'] * 100000
-        
-#         # Display the prediction in a readable format with commas and 2 decimal places
-#         print(f"Predicted house value: ${predicted_value:,.2f}")
-        
-#         # Show the status from the API response
-#         print(f"Status: {result['status']}")
-#     else:
-#         # If status code is not 200, something went wrong
-#         print(f"Error: {response.status_code}")
-#         # Print the error message from the server
-#         print(response.text)
-        
-# # Handle the specific case where we can't connect to the server
-# except requests.exceptions.ConnectionError:
-#     print(f"Error: Could not connect to API. Make sure the server is running on {url}")
-# # Handle any other unexpected errors
-# except Exception as e:
-#     print(f"Error: {e}")
-
-
-
-# ...existing code...
 import argparse
 import json
 import os
+import requests
 import sys
 from typing import Any, Dict, Optional
 
-import requests
 
 
 DEFAULT_URL = "http://localhost:8000/predict"
