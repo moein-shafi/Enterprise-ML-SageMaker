@@ -8,12 +8,13 @@ if __name__ == "__main__":
     df = pd.read_csv(input_data_path)
     
     print(f"Processing {len(df)} samples...")
-    
+
     # Apply the same preprocessing steps you've done before:
     # 1. Cap outliers at 95th percentiles (excluding geographic coordinates)
     # 2. Create RoomsPerHousehold feature
     # 3. Select relevant features for modeling
     # ... (preprocessing logic here) ...
+
     # Cap outliers
     for col in df.columns:
         if col not in ["Latitude", "Longitude"]:
@@ -28,7 +29,7 @@ if __name__ == "__main__":
     ]
     X = df[feature_cols]
     y = df["MedHouseVal"]
-    
+
     
     # Split the data into training and testing sets (80% train, 20% test)
     X_train, X_test, y_train, y_test = train_test_split(
@@ -50,3 +51,5 @@ if __name__ == "__main__":
     print("Data processing completed!")
     print(f"Train samples: {len(X_train)}")
     print(f"Test samples: {len(X_test)}")
+    print("Processed training and testing data saved.")
+    
