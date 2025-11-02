@@ -29,9 +29,14 @@ def train(args):
     Train the model using data from the specified training directory.
     """
     # Load the training data from S3
-    train_data_path = os.path.join(args.train, 'california_housing_train.csv')
+    # train_data_path = os.path.join(args.train, 'california_housing_train.csv')
+    # df = pd.read_csv(train_data_path)
+
+    train_data_path = os.path.join(args.train, 'train.csv')
     df = pd.read_csv(train_data_path)
+    print(f"Training data contains {len(df)} samples.")
     
+
     # Separate features and target variable
     X_train = df.drop("MedHouseVal", axis=1)  # Features
     y_train = df["MedHouseVal"]               # Target: median house value
